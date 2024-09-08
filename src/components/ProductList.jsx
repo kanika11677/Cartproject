@@ -5,6 +5,7 @@ import SnackbarNotification from './SnackbarNotification';
 import axiosInstance from '../Config/axiosInstance';
 import SearchBox from './SearchBox';
 import BlockComponent from './BlockComponent';
+import TableRowComp from './TableRowComp';
 
 const ProductList = () => {
     const products = useSelector(state => state.products.products); // fetching product list from redux store 'product' key
@@ -95,29 +96,13 @@ const ProductList = () => {
                         </tr>
                     </thead>
                     <tbody>
-
                         {invalidSearch &&  <h1 className="text-1xl font-bold mb-4 py-4 px-4">{invalidSearch}</h1>}
 
                         {filterProduct.length >0 && filterProduct.map(product => (
-                            <tr key={product.id} className="border-b">
-                                <td className="py-2 px-4 text-sm">{product.id}</td>
-                                <td className="py-2 px-4 text-sm">{product.title}</td>
-                                <td className="py-2 px-4 text-sm">${product.price}</td>
-                                <td className="py-2 px-4 text-sm">
-                                    <button onClick={()=>{handleAddItem(product)}}  className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
-                                    Add to Cart
-                                </button></td>
-                                <td className="py-2 px-4 text-sm">
-                                <button
-                                onClick={() => handleRemoveItem(product.id)}
-                                className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600" >
-                                Remove
-                                </button>
-                            </td>
-                                <SnackbarNotification open={snackbarOpen} onClose={handleSnackbarClose} message="Item added to cart!"/>
-                            </tr>
+                            <TableRowComp key={product.id} product={product} handleAddItem = {handleAddItem} handleRemoveItem={handleRemoveItem}/>
                         ))}
                     </tbody>
+                    <SnackbarNotification open={snackbarOpen} onClose={handleSnackbarClose} message="Item added to cart!"/>
                 </table>
             </div>
         </div>

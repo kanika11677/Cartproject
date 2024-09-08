@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { addProduct } from '../store/actions';
+import FormFeild from '../components/FormFeild';
 
 const AddProduct = () => {
     const [formData, setFormData] = useState({
@@ -31,44 +32,24 @@ const AddProduct = () => {
         };
         dispatch(addProduct(newProduct));
         setaddDataFlag(true);
+        setFormData({
+            title: '',
+            price: '',
+        });
         setTimeout(()=>{setaddDataFlag(false)}, 5000); //on added product hide 'success' message after 5 sec.
     };
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100">
             <form onSubmit={handleSubmit} className="w-full max-w-lg bg-white p-8 rounded-lg shadow-lg">
-                {addDataFlag && "Data Added Succesfully!!"}
+                {addDataFlag && (
+                    <div className='bg-green-500 text-white font-bold py-2 px-4 rounded-lg mb-10'>Data Added Succesfully!!</div>
+                )}
                 <h2 className="text-2xl font-bold mb-6 text-gray-800">Add Product</h2>
 
-                <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-                        Title
-                    </label>
-                    <input
-                        type="text"
-                        name="title"
-                        value={formData.title}
-                        onChange={handleChange}
-                        className="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring focus:border-blue-300"
-                        placeholder="Product Name"
-                        required
-                    />
-                </div>
+                <FormFeild dataVal = {formData.title} handleChange = {handleChange} name = "title"/>
 
-                <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-                        Price
-                    </label>
-                    <input
-                        type="text"
-                        name="price"
-                        value={formData.price}
-                        onChange={handleChange}
-                        className="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring focus:border-blue-300"
-                        placeholder="Price"
-                        required
-                    />
-                </div>
+                <FormFeild dataVal = {formData.price} handleChange = {handleChange} name = "price"/>
 
                 <div className="flex items-center justify-between">
                     <button
