@@ -2,69 +2,51 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## About This Project
+###### Name: Alpha
+###### version: 1.0.0
+###### Author: kanika sharma
+###### Description: This App is creating Add to Cart, Add product, Login , Logout features.
 
-In the project directory, you can run:
+> ### React + Redux codebase containing real world examples (CRUD, auth etc) that adheres to the [RealWorld](https://github.com/kanika11677/Cartproject/tree/CartProjectReact) spec and API.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Getting started
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+You can view demo in local machine by taking a clone of this project repository : http://localhost:3000/
 
-### `npm test`
+To get the frontend running locally:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Clone this repo
+- `npm install` to install all req'd dependencies
+- `npm start` to start the local server (this project uses create-react-app)
 
-### `npm run build`
+Local web server will use port 4100 instead of standard React's port 3000 to prevent conflicts with some backends like Node or Rails. You can configure port in scripts section of `package.json`: we use [cross-env](https://github.com/kentcdodds/cross-env) to set environment variable PORT for React scripts, this is Windows-compatible way of setting environment variables.
+ 
+Alternatively, you can add `.env` file in the root folder of project to set environment variables (use PORT to change webserver's port). This file will be ignored by git, so it is suitable for API keys and other sensitive stuff. Refer to [dotenv](https://github.com/motdotla/dotenv) and [React](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-development-environment-variables-in-env) documentation for more details. Also, please remove setting variable via script section of `package.json` - `dotenv` never override variables if they are already set.  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Making requests to the backend API
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+For convenience, To get product dummy list and during login to get dummy user credentials we are using open source API service 'https://dummyjson.com/' for the application to make requests against.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Functionality overview
 
-### `npm run eject`
+The example application is a Add to cart site called "Alpha". We are intialy making API request to #rd party API to get user credetials and Product list and then to avoid making multiple request to server every time we switch pages or component demounts we store product list in reddux store and also storing cart added data in redux store so that entire application can re-use both product list and cart added items data. 
+we have also saved Logged in user data in localstorage and reading from local storage.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**General functionality:**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Authenticate users via making API request to client with valid user details (login pages + logout button on dashboard page)
+- Product GET(Fetching) data from API and display Product list, Add Product, Delete Product
+- Cart Page with Cart items List, Adding Product to cart, Removing Product from Cart
+- Search Products From product list by name in dashboard page 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Project Overview
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![alt text](https://github.com/kanika11677/Cartproject/blob/CartProjectReact/snapshot/login.png)
 
-## Learn More
+![alt text](https://github.com/kanika11677/Cartproject/blob/CartProjectReact/snapshot/dashboard.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![alt text](https://github.com/kanika11677/Cartproject/blob/CartProjectReact/snapshot/addproduct.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![alt text](https://github.com/kanika11677/Cartproject/blob/CartProjectReact/snapshot/cart.png)
