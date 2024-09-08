@@ -29,9 +29,13 @@ Alternatively, you can add `.env` file in the root folder of project to set envi
 
 For convenience, To get product dummy list and during login to get dummy user credentials we are using open source API service 'https://dummyjson.com/' for the application to make requests against.
 
+Sample user credentails for login (User refrence - https://dummyjson.com/users):
+username: emilys
+password: emilyspass
+
 ## Functionality overview
 
-The example application is a Add to cart site called "Alpha". We are intialy making API request to #rd party API to get user credetials and Product list and then to avoid making multiple request to server every time we switch pages or component demounts we store product list in reddux store and also storing cart added data in redux store so that entire application can re-use both product list and cart added items data. 
+The example application is a Add to cart site called "Alpha". We are intialy making API request to third party API to get user credetials and Product list and then to avoid making multiple request to server every time we switch pages or component demounts we store product list in reddux store and also storing cart added data in redux store so that entire application can re-use both product list and cart added items data. 
 we have also saved Logged in user data in localstorage and reading from local storage.
 
 **General functionality:**
