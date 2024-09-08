@@ -29,7 +29,7 @@ Alternatively, you can add `.env` file in the root folder of project to set envi
 
 For convenience, To get product dummy list and during login to get dummy user credentials we are using open source API service 'https://dummyjson.com/' for the application to make requests against.
 
-Sample user credentails for login (User refrence - https://dummyjson.com/users):
+### Sample user credentails for login (User refrence - https://dummyjson.com/users):
 username: emilys
 password: emilyspass
 
